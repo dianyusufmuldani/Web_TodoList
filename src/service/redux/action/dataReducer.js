@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { hitAddData, hitData, hitDelete } from "../../api";
 
 const initialState = {
-  data: null,
+  data: [],
   oneData: [],
 };
 export const DataSlice = createSlice({

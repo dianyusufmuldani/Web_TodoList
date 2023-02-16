@@ -16,7 +16,11 @@ hitApi.interceptors.response.use((response) => {
 });
 
 export const hitData = (requestParams) => {
-  return hitApi.get("activity-groups", requestParams);
+  console.log("cek email", requestParams);
+  return hitApi.get(
+    `activity-groups?email=${requestParams.email}`,
+    requestParams
+  );
 };
 export const hitDelete = (requestParams) => {
   console.log("requestparams ", requestParams);
