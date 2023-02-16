@@ -3,9 +3,9 @@ import HeaderApp from "../component/header";
 
 const Dashboard = () => {
   return (
-    <div>
+    <>
       <HeaderApp />
-    </div>
+    </>
   );
 };
 
