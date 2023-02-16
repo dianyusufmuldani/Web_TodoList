@@ -6,7 +6,9 @@ const HeaderApp = () => {
       data-cy="header-background"
       className="bg-primary text-white h-[105px] text-2xl font-bold fixed flex inset-0 items-center "
     >
-      <span data-cy="header-title">TO DO LIST APP</span>
+      <div className="mx-auto w-full max-w-[1000px] text-2xl font-bold">
+        <span data-cy="header-title">TO DO LIST APP</span>
+      </div>
     </div>
   );
 };
