@@ -19,7 +19,7 @@ const style = {
 
 export default function AlertConfirm({ open, onClose, onDelete }) {
   return (
-    <div>
+    <div data-cy="alertConfirm">
       <Modal
         open={open}
         // onClose={onClose}

@@ -14,6 +14,7 @@ import {
 import CardTodoList from "../component/cardTodoList";
 import moment from "moment/moment";
 import AlertConfirm from "../component/alertConfirm";
+import Loading from "../component/loading";
 
 const Dashboard = () => {
   const [open, setOpen] = useState(false);
@@ -61,6 +62,7 @@ const Dashboard = () => {
               open={open}
               onDelete={handleDelete}
             />
+
             {stateData.data != null ? (
               <div className="coverData">
                 {stateData.data.map((item, index) => {
@@ -76,7 +78,8 @@ const Dashboard = () => {
                 })}
               </div>
             ) : (
-              <img src={ImageEmpty} className="imageEmpty" alt="ImageEmpty" />
+              // <img src={ImageEmpty} className="imageEmpty" alt="ImageEmpty" />
+              <Loading />
             )}
           </div>
         </Grid>

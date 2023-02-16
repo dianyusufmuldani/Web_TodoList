@@ -3,7 +3,7 @@ import IconPlus from "../assets/plus_icon.svg";
 
 const ButtonPrimary = ({ value, onClick }) => {
   return (
-    <div>
+    <div data-cy="buttonPrimary">
       <button className="buttonPrimary" onClick={onClick}>
         <img src={IconPlus} width="14px" alt="Icon Plus" />
         {` ${value}`}
