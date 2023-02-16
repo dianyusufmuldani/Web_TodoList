@@ -2,14 +2,14 @@ import React from "react";
 
 const HeaderApp = () => {
   return (
-    <div
+    <header
       data-cy="header-background"
-      className="bg-primary text-white h-[105px] text-2xl font-bold fixed flex inset-0 items-center "
+      className="bg-primary fixed inset-0 flex h-[105px] items-center text-white [&+*]:mt-[105px]"
     >
       <div className="mx-auto w-full max-w-[1000px] text-2xl font-bold">
         <span data-cy="header-title">TO DO LIST APP</span>
       </div>
-    </div>
+    </header>
   );
 };
 
