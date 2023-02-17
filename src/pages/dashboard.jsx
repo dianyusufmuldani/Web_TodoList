@@ -114,7 +114,7 @@ const Dashboard = () => {
                 <button
                   onClick={() => handleModalDelete(item)}
                   data-cy="activity-item-delete-button"
-                  className="ml-auto ml-[190px] "
+                  className="ml-auto pl-[190px] "
                 >
                   <svg
                     width={24}
