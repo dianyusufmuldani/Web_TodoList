@@ -11,7 +11,7 @@ const ModalEdit = ({
   return (
     <div>
       {showModalEditItem ? (
-        <div className="fixed inset-0 z-30 flex flex-col items-center bg-black/30">
+        <div className="fixed inset-0 z-auto flex flex-col items-center bg-black/30">
           <article
             data-cy="modal-add"
             className="my-auto w-full max-w-[830px] rounded-xl bg-white shadow-md"

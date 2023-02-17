@@ -4,7 +4,7 @@ const ModalSelectSort = ({ showSelectSort }) => {
   return (
     <div>
       {showSelectSort ? (
-        <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-50">
+        <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-auto">
           <button
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"

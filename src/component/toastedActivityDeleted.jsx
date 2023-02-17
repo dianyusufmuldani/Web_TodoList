@@ -6,7 +6,7 @@ const ToastedActivityDeleted = ({ showModalToasted, handleCloseToasted }) => {
       {showModalToasted ? (
         <div
           onClick={handleCloseToasted}
-          className="fixed inset-0 z-50 flex flex-col items-center bg-black/30"
+          className="fixed inset-0 z-auto flex flex-col items-center bg-black/30"
         >
           <div
             data-cy="modal-information"

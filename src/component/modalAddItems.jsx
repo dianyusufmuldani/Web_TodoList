@@ -20,7 +20,7 @@ const ModalAddItems = ({
     <div>
       {showAddItems ? (
         <div
-          className="fixed inset-0 z-30 flex flex-col items-center bg-black/30"
+          className="fixed inset-0 z-auto flex flex-col items-center bg-black/30"
           // onClick={() => setShowAddItems(false)}
         >
           <article

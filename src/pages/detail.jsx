@@ -223,7 +223,7 @@ const Detail = () => {
                     <span
                       onClick={() => handleActiveItems(item)}
                       data-cy="todo-item-checkbox"
-                      className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center z-30"
+                      className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center z-auto"
                     ></span>
                     <span
                       data-cy="todo-item-priority-indicator"
@@ -236,7 +236,7 @@ const Detail = () => {
                     <span
                       onClick={() => handleInActiveItems(item)}
                       data-cy="todo-item-checkbox"
-                      className="h-5 w-5 cursor-pointer border flex items-center justify-center border-blue bg-primary  z-30"
+                      className="h-5 w-5 cursor-pointer border flex items-center justify-center border-blue bg-primary  z-auto"
                     >
                       <svg
                         width={14}
@@ -282,7 +282,7 @@ const Detail = () => {
                 </button>
                 <button
                   data-cy="todo-item-delete-button"
-                  className="ml-auto z-40"
+                  className="ml-auto z-auto"
                   onClick={() => {
                     setShowModalDelete(true);
                     setDataOne(item);
