@@ -415,7 +415,10 @@ const Detail = () => {
           </div>
         ) : null}
         {showModalDelete ? (
-          <div className="fixed inset-0 z-50 flex flex-col items-center bg-black/30">
+          <div
+            data-cy="modal-delete"
+            className="fixed inset-0 z-50 flex flex-col items-center bg-black/30"
+          >
             <div
               data-cy="modal-delete"
               className="my-auto flex w-full max-w-lg flex-col items-center rounded-xl bg-white p-10 text-lg shadow-md"
@@ -464,6 +467,7 @@ const Detail = () => {
         ) : null}
         {showModalDeleteSuccess ? (
           <div
+            data-cy="modal-information"
             className="fixed inset-0 z-50 flex flex-col items-center bg-black/30"
             onClick={() => setShowModalDeleteSuccess(false)}
           >
