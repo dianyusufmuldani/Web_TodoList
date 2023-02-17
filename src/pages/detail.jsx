@@ -163,7 +163,7 @@ const Detail = () => {
             <div className="relative ml-auto">
               <button
                 data-cy="todo-sort-button"
-                className="border-primary h-[54px] w-[54px] rounded-full border"
+                className="border-primary h-[54px] w-[54px] rounded-full border z-10"
                 onClick={() => setShowSelectSort(!showSelectSort)}
               >
                 <svg
