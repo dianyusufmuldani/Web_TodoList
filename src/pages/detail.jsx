@@ -57,7 +57,10 @@ const Detail = () => {
   return (
     <>
       <HeaderApp />
-      <main className="mx-auto flex w-full max-w-[1000px] flex-col py-11">
+      <main
+        className="mx-auto flex w-full max-w-[1000px] flex-col py-11"
+        data-cy="activity-item"
+      >
         <div className="flex h-[54px] items-center gap-5">
           <a data-cy="todo-back-button" className="mr-2" href="/">
             <svg
