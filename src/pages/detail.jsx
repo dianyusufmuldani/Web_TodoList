@@ -24,7 +24,7 @@ const Detail = () => {
   const [sorted, setSorted] = useState({ sorted: "title", reversed: false });
   const params = useParams();
   const { id } = params;
-  console.log("isi data", showModalEditItem);
+  console.log("isi data", dataOne);
 
   useEffect(() => {
     if (data !== null || data !== undefined) {
@@ -79,6 +79,29 @@ const Detail = () => {
       });
     setShowModalDelete(false);
     setShowModalDeleteSuccess(true);
+  };
+
+  const handleActiveItems = (item) => {
+    const request = { is_active: 0 };
+    axios
+      .patch(
+        `https://todo.api.devcode.gethired.id/todo-items/${item.id}`,
+        request
+      )
+      .then((res) => {
+        console.log("not active");
+      });
+  };
+  const handleInActiveItems = (item) => {
+    const request = { is_active: 1 };
+    axios
+      .patch(
+        `https://todo.api.devcode.gethired.id/todo-items/${item.id}`,
+        request
+      )
+      .then((res) => {
+        console.log("actived");
+      });
   };
   return (
     <>
@@ -168,15 +191,49 @@ const Detail = () => {
                 data-cy="todo-item"
                 className="flex h-20 items-center gap-4 rounded-xl bg-white px-7 text-lg font-medium shadow-lg"
               >
-                <span
-                  data-cy="todo-item-checkbox"
-                  className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center"
-                ></span>
-                <span
-                  data-cy="todo-item-priority-indicator"
-                  className="rounded-full h-[9px] w-[9px]"
-                ></span>
-                <h3 data-cy="todo-item-title">{item.title}</h3>
+                {item.is_active == 1 ? (
+                  <>
+                    <span
+                      onClick={() => handleActiveItems(item)}
+                      data-cy="todo-item-checkbox"
+                      className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center"
+                    ></span>
+                    <span
+                      data-cy="todo-item-priority-indicator"
+                      className="rounded-full h-[9px] w-[9px]"
+                    ></span>
+                    <h3 data-cy="todo-item-title">{item.title}</h3>
+                  </>
+                ) : (
+                  <>
+                    <span
+                      onClick={() => handleInActiveItems(item)}
+                      data-cy="todo-item-checkbox"
+                      className="h-5 w-5 cursor-pointer border flex items-center justify-center border-blue bg-primary"
+                    >
+                      <svg
+                        width={14}
+                        height={14}
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="m2.917 7 2.916 2.917 5.833-5.834"
+                          stroke="#fff"
+                          strokeWidth={2}
+                          strokeLinecap="square"
+                        ></path>
+                      </svg>
+                    </span>
+                    <span
+                      data-cy="todo-item-priority-indicator"
+                      className="rounded-full h-[9px] w-[9px]"
+                    ></span>
+                    <h3 data-cy="todo-item-title">
+                      <s>{item.title}</s>
+                    </h3>
+                  </>
+                )}
                 <button
                   data-cy="todo-item-edit-button"
                   onClick={() => setShowModalEditItem(true)}
@@ -198,7 +255,7 @@ const Detail = () => {
                 </button>
                 <button
                   data-cy="todo-item-delete-button"
-                  className="ml-auto z-50"
+                  className="ml-auto z-1"
                   onClick={() => {
                     setShowModalDelete(true);
                     setDataOne(item);

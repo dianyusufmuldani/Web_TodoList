@@ -88,12 +88,12 @@ const Dashboard = () => {
         <div className="grid grid-cols-4 gap-5">
           {data.map((item, index) => {
             return (
-              <div>
+              <div className="mb-[20px]">
                 <a
                   href={`/detail/${item.id}`}
                   key={index}
                   data-cy="activity-item"
-                  className="flex h-60 flex-col rounded-xl bg-white p-6 text-left shadow-lg "
+                  className="flex h-60 flex-col rounded-xl bg-white p-6 text-left shadow-lg mb-[-48px]"
                 >
                   <h3
                     data-cy="activity-item-title"
@@ -110,10 +110,11 @@ const Dashboard = () => {
                     </span>
                   </div>
                 </a>
+
                 <button
                   onClick={() => handleModalDelete(item)}
                   data-cy="activity-item-delete-button"
-                  className="ml-auto"
+                  className="ml-auto ml-[190px] "
                 >
                   <svg
                     width={24}
