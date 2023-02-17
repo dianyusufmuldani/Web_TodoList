@@ -406,7 +406,13 @@ const Detail = () => {
                   onClick={handleAddItems}
                   className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto w-40 justify-center disabled:opacity-20"
                   data-cy="modal-add-save-button"
-                  disabled={itemName !== null && itemName !== "" ? false : true}
+                  disabled={
+                    itemName !== null &&
+                    priority !== "Pilih Priority" &&
+                    itemName !== ""
+                      ? false
+                      : true
+                  }
                 >
                   Simpan
                 </button>
@@ -685,6 +691,13 @@ const Detail = () => {
                 <button
                   data-cy="modal-add-save-button"
                   className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto w-40 justify-center disabled:opacity-20"
+                  disabled={
+                    itemName !== null &&
+                    priority !== "Pilih Priority" &&
+                    itemName !== ""
+                      ? false
+                      : true
+                  }
                 >
                   Simpan
                 </button>
