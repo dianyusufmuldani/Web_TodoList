@@ -186,7 +186,7 @@ const Detail = () => {
                 </button>
                 <button
                   data-cy="todo-item-delete-button"
-                  className="ml-auto"
+                  className="ml-auto z-50"
                   onClick={() => {
                     setShowModalDelete(true);
                     setDataOne(item);
@@ -214,7 +214,7 @@ const Detail = () => {
 
         {showAddItems ? (
           <div
-            className="fixed inset-0 z-50 flex flex-col items-center bg-black/30"
+            className="fixed inset-0 z-40 flex flex-col items-center bg-black/30"
             // onClick={() => setShowAddItems(false)}
           >
             <article
@@ -415,10 +415,7 @@ const Detail = () => {
           </div>
         ) : null}
         {showModalDelete ? (
-          <div
-            data-cy="modal-delete"
-            className="fixed inset-0 z-50 flex flex-col items-center bg-black/30"
-          >
+          <div className="fixed inset-0 z-40 flex flex-col items-center bg-black/30">
             <div
               data-cy="modal-delete"
               className="my-auto flex w-full max-w-lg flex-col items-center rounded-xl bg-white p-10 text-lg shadow-md"
@@ -468,7 +465,7 @@ const Detail = () => {
         {showModalDeleteSuccess ? (
           <div
             data-cy="modal-information"
-            className="fixed inset-0 z-50 flex flex-col items-center bg-black/30"
+            className="fixed inset-0 z-40 flex flex-col items-center bg-black/30"
             onClick={() => setShowModalDeleteSuccess(false)}
           >
             <div
@@ -495,7 +492,7 @@ const Detail = () => {
           </div>
         ) : null}
         {showModalEditItem ? (
-          <div className="fixed inset-0 z-50 flex flex-col items-center bg-black/30">
+          <div className="fixed inset-0 z-40 flex flex-col items-center bg-black/30">
             <article
               data-cy="modal-add"
               className="my-auto w-full max-w-[830px] rounded-xl bg-white shadow-md"
