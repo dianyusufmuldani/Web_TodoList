@@ -87,6 +87,7 @@ const Dashboard = () => {
             return (
               <>
                 <a
+                  href={`/detail/${item.id}`}
                   key={index}
                   data-cy="activity-item"
                   className="flex h-60 flex-col rounded-xl bg-white p-6 text-left shadow-lg"
