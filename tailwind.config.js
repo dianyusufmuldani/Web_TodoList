@@ -5,6 +5,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#16ABF8",
+        cancel: "#F4F4F4",
+        delete: "#ED4C5C",
       },
       height: {
         105: "105px",
