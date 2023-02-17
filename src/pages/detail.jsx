@@ -223,7 +223,7 @@ const Detail = () => {
                     <span
                       onClick={() => handleActiveItems(item)}
                       data-cy="todo-item-checkbox"
-                      className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center z-40"
+                      className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center z-30"
                     ></span>
                     <span
                       data-cy="todo-item-priority-indicator"
@@ -236,7 +236,7 @@ const Detail = () => {
                     <span
                       onClick={() => handleInActiveItems(item)}
                       data-cy="todo-item-checkbox"
-                      className="h-5 w-5 cursor-pointer border flex items-center justify-center border-blue bg-primary  z-50"
+                      className="h-5 w-5 cursor-pointer border flex items-center justify-center border-blue bg-primary  z-30"
                     >
                       <svg
                         width={14}

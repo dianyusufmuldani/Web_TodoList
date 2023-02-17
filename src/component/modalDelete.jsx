@@ -9,7 +9,7 @@ const ModalDelete = ({
   return (
     <div>
       {showModalDelete ? (
-        <div className="fixed inset-0 z-40 flex flex-col items-center bg-black/30">
+        <div className="fixed inset-0 z-30 flex flex-col items-center bg-black/30">
           <div
             data-cy="modal-delete"
             className="my-auto flex w-full max-w-lg flex-col items-center rounded-xl bg-white p-10 text-lg shadow-md"

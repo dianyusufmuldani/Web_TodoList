@@ -9,7 +9,7 @@ const ToastedDeleteSuccess = ({
       {showModalDeleteSuccess ? (
         <div
           data-cy="modal-information"
-          className="fixed inset-0 z-40 flex flex-col items-center bg-black/30"
+          className="fixed inset-0 z-30 flex flex-col items-center bg-black/30"
           onClick={handleCancelToasted}
         >
           <div
