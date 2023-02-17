@@ -7,6 +7,7 @@ import ModalEdit from "../component/modalEdit";
 import ToastedDeleteSuccess from "../component/toastedDeleteSuccess";
 import ModalDelete from "../component/modalDelete";
 import ModalAddItems from "../component/modalAddItems";
+import ModalSelectSort from "../component/modalSelectSort";
 
 const Detail = () => {
   const [data, setData] = useState([]);
@@ -22,6 +23,7 @@ const Detail = () => {
   const [title, setTitle] = useState(null);
   const [dataTitle, setDataTitle] = useState(null);
   const [sorted, setSorted] = useState({ sorted: "title", reversed: false });
+  const [showSelectSort, setShowSelectSort] = useState(false);
   const params = useParams();
   const { id } = params;
   console.log("isi data", dataOne);
@@ -157,11 +159,36 @@ const Detail = () => {
               ></path>
             </svg>
           </button>
+          {data.length !== 0 ? (
+            <div className="relative ml-auto">
+              <button
+                data-cy="todo-sort-button"
+                className="border-primary h-[54px] w-[54px] rounded-full border"
+                onClick={() => setShowSelectSort(!showSelectSort)}
+              >
+                <svg
+                  width={24}
+                  height={24}
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="mx-auto"
+                >
+                  <path
+                    d="m3 9 4-4m0 0 4 4M7 5v14M21 15l-4 4m0 0-4-4m4 4V5"
+                    stroke="#888"
+                    strokeWidth={1.5}
+                    strokeLinecap="square"
+                  ></path>
+                </svg>
+              </button>
+              <ModalSelectSort showSelectSort={showSelectSort} />
+            </div>
+          ) : null}
           <button
             // onClick={SortAscending}
             onClick={() => setShowAddItems(true)}
             data-cy="todo-add-button"
-            className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto"
+            className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white "
           >
             <svg
               width={24}
@@ -196,7 +223,7 @@ const Detail = () => {
                     <span
                       onClick={() => handleActiveItems(item)}
                       data-cy="todo-item-checkbox"
-                      className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center z-50"
+                      className="border-secondary h-5 w-5 cursor-pointer border flex items-center justify-center z-40"
                     ></span>
                     <span
                       data-cy="todo-item-priority-indicator"
@@ -255,7 +282,7 @@ const Detail = () => {
                 </button>
                 <button
                   data-cy="todo-item-delete-button"
-                  className="ml-auto z-50"
+                  className="ml-auto z-40"
                   onClick={() => {
                     setShowModalDelete(true);
                     setDataOne(item);
