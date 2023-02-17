@@ -18,9 +18,18 @@ const Detail = () => {
   const [priority, setPriority] = useState("Pilih Priority");
   const [title, setTitle] = useState(null);
   const [dataTitle, setDataTitle] = useState(null);
+  const [checkFieldEdit, setCheckFieldEdit] = useState(true);
+  const [checkFieldAdd, setCheckFieldAdd] = useState(true);
   const params = useParams();
   const { id } = params;
   console.log("isi data", data);
+  useEffect(() => {
+    if (itemName !== "" && itemName !== null && priority !== "Pilih Priority") {
+      setCheckFieldAdd(false);
+    } else {
+      setCheckFieldAdd(true);
+    }
+  }, [itemName, priority]);
   useEffect(() => {
     if (data !== null || data !== undefined) {
       axios
@@ -406,13 +415,7 @@ const Detail = () => {
                   onClick={handleAddItems}
                   className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto w-40 justify-center disabled:opacity-20"
                   data-cy="modal-add-save-button"
-                  disabled={
-                    itemName !== null &&
-                    priority !== "Pilih Priority" &&
-                    itemName !== ""
-                      ? false
-                      : true
-                  }
+                  disabled={checkFieldAdd}
                 >
                   Simpan
                 </button>
@@ -691,13 +694,7 @@ const Detail = () => {
                 <button
                   data-cy="modal-add-save-button"
                   className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto w-40 justify-center disabled:opacity-20"
-                  disabled={
-                    itemName !== null &&
-                    priority !== "Pilih Priority" &&
-                    itemName !== ""
-                      ? false
-                      : true
-                  }
+                  //   disabled={checkFieldEdit}
                 >
                   Simpan
                 </button>
