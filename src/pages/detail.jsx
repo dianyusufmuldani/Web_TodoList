@@ -369,7 +369,7 @@ const Detail = () => {
                     </button>
                     <button
                       data-cy="todo-item-delete-button"
-                      className="ml-auto z-auto"
+                      className="ml-auto z-10"
                       onClick={() => {
                         setShowModalDelete(true);
                         setDataOne(item);
