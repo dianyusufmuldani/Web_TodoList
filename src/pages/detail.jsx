@@ -84,6 +84,7 @@ const Detail = () => {
         console.log("Edited", res);
         setLifecycle(res.status);
       });
+    setShowEdit(false);
   };
 
   const handleAddItems = (itemName, priority) => {
@@ -198,17 +199,24 @@ const Detail = () => {
             value={title}
             onChange={(value) => setTitle(value.target.value)}
             hidden={!showEdit}
+            onAbort={handleEditActivity}
           ></input>
           <h1
+            onClick={() => setShowEdit(true)}
             data-cy="todo-title"
             className="text-4xl font-bold"
             hidden={showEdit}
           >
             {dataTitle}
           </h1>
-          <button data-cy="todo-title-edit-button" onClick={handleEditActivity}>
+          <button
+            data-cy="todo-title-edit-button"
+            onClick={() => {
+              handleEditActivity();
+              setShowEdit(!showEdit);
+            }}
+          >
             <svg
-              onClick={() => setShowEdit(!showEdit)}
               width={24}
               height={24}
               fill="none"
