@@ -148,10 +148,34 @@ const Detail = () => {
   return (
     <>
       <HeaderApp />
+
       <main
         className="mx-auto flex w-full max-w-[1000px] flex-col py-11"
         data-cy="activity-item"
       >
+        <ModalAddItems
+          handleAddItems={handleAddItems}
+          showAddItems={showAddItems}
+          handleCloseModalAddItems={() => setShowAddItems(false)}
+        />
+        <ModalDelete
+          handleCancelModal={() => setShowModalDelete(false)}
+          handleDeleteItems={handleDeleteItems}
+          showModalDelete={showModalDelete}
+          dataOne={dataOne}
+        />
+        <ToastedDeleteSuccess
+          showModalDeleteSuccess={showModalDeleteSuccess}
+          handleCancelToasted={() => setShowModalDeleteSuccess(false)}
+        />
+        <ModalEdit
+          showModalEditItem={showModalEditItem}
+          showSelectPriority={showSelectPriority}
+          handleCancelEditItem={() => setShowModalEditItem(false)}
+          handleSelectPriority={() =>
+            setShowSelectPriority(!showSelectPriority)
+          }
+        />
         <div className="flex h-[54px] items-center gap-5">
           <a data-cy="todo-back-button" className="mr-2" href="/">
             <svg
@@ -372,30 +396,6 @@ const Detail = () => {
             })}
           </>
         )}
-
-        <ModalAddItems
-          handleAddItems={handleAddItems}
-          showAddItems={showAddItems}
-          handleCloseModalAddItems={() => setShowAddItems(false)}
-        />
-        <ModalDelete
-          handleCancelModal={() => setShowModalDelete(false)}
-          handleDeleteItems={handleDeleteItems}
-          showModalDelete={showModalDelete}
-          dataOne={dataOne}
-        />
-        <ToastedDeleteSuccess
-          showModalDeleteSuccess={showModalDeleteSuccess}
-          handleCancelToasted={() => setShowModalDeleteSuccess(false)}
-        />
-        <ModalEdit
-          showModalEditItem={showModalEditItem}
-          showSelectPriority={showSelectPriority}
-          handleCancelEditItem={() => setShowModalEditItem(false)}
-          handleSelectPriority={() =>
-            setShowSelectPriority(!showSelectPriority)
-          }
-        />
       </main>
     </>
   );
