@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const ModalEdit = ({
   showModalEditItem,
@@ -10,6 +10,14 @@ const ModalEdit = ({
   const [priority, setPriority] = useState("Pilih Priority");
   const [showSelectPriorityEdit, setShowSelectPriorityEdit] = useState(false);
   const [nameItem, setNameItem] = useState(null);
+  const [checkForm, setCheckForm] = useState(true);
+  useEffect(() => {
+    if (nameItem !== null && nameItem !== "" && priority !== "Pilih Priority") {
+      setCheckForm(false);
+    } else {
+      setCheckForm(true);
+    }
+  }, [priority, nameItem]);
 
   return (
     <div>
@@ -211,7 +219,7 @@ const ModalEdit = ({
                 onClick={() => handleSave(nameItem, priority)}
                 data-cy="modal-add-save-button"
                 className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto w-40 justify-center disabled:opacity-20"
-                //   disabled={checkFieldEdit}
+                disabled={checkForm}
               >
                 Simpan
               </button>

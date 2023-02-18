@@ -38,7 +38,7 @@ const Detail = () => {
           // setData(res.data.todo_items);
           console.log("Success get 1 data", res.data.todo_items);
           setDataTitle(res.data.title);
-          let sorted = res.data.todo_items.sort((a, b) => a.id - b.id);
+          let sorted = res.data.todo_items.sort((b, a) => a.id - b.id);
           setData(sorted);
         });
     } else {
@@ -73,12 +73,12 @@ const Detail = () => {
     }
   };
   const SortTerbaru = () => {
-    let sorted = data.sort((a, b) => a.id - b.id);
+    let sorted = data.sort((b, a) => a.id - b.id);
     console.log("hasil", sorted);
     setData(sorted);
   };
   const SortTerlama = () => {
-    let sorted = data.sort((b, a) => a.id - b.id);
+    let sorted = data.sort((a, b) => a.id - b.id);
     console.log("hasil", sorted);
     setData(sorted);
   };
