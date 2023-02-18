@@ -209,7 +209,11 @@ const ModalAddItems = ({
             </div>
             <div className="border-primary border-t px-10 py-5">
               <button
-                onClick={() => handleAddItems(itemName, priority)}
+                onClick={() => {
+                  handleAddItems(itemName, priority);
+                  setPriority("Pilih Priority");
+                  setItemName(null);
+                }}
                 className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto w-40 justify-center disabled:opacity-20"
                 data-cy="modal-add-save-button"
                 disabled={checkFieldAdd}
