@@ -36,7 +36,7 @@ const Detail = () => {
         .get(`https://todo.api.devcode.gethired.id/activity-groups/${id}`)
         .then((res) => {
           // setData(res.data.todo_items);
-          console.log("Success get 1 data", res.data.todo_items);
+          console.log("Success get 1 dataa", res.data.todo_items);
           setDataTitle(res.data.title);
           let sorted = res.data.todo_items.sort((b, a) => a.id - b.id);
           setData(sorted);
