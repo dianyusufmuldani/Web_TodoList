@@ -16,7 +16,7 @@ const ModalEdit = ({
             data-cy="modal-add"
             className="my-auto w-full max-w-[830px] rounded-xl bg-white shadow-md"
           >
-            <header className="border-primary flex h-[70px] items-center border-b px-[30px] text-lg font-semibold">
+            <header className="border-primary flex h-[70px] items-center border-b px-[30px] text-lg font-semibold z-10">
               <h3 data-cy="modal-add-title">Edit Item</h3>
               <button
                 data-cy="modal-add-close-button"
