@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import IconNike from "../assets/nike.svg";
 
 const ModalSelectSort = ({
   showSelectSort,
@@ -8,13 +9,17 @@ const ModalSelectSort = ({
   handleZA,
   handleBelumSelesai,
 }) => {
+  const [sortingBy, setSortingBy] = useState("Terbaru");
   return (
     <div>
       {showSelectSort ? (
         <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-0">
           <button
             data-cy="sort-selection"
-            onClick={handleTerbaru}
+            onClick={() => {
+              handleTerbaru();
+              setSortingBy("Terbaru");
+            }}
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
             <svg
@@ -31,9 +36,16 @@ const ModalSelectSort = ({
               ></path>
             </svg>
             Terbaru
+            {sortingBy === "Terbaru" ? (
+              <img src={IconNike} width={18} height={18} className="ml-auto" />
+            ) : null}
           </button>
+
           <button
-            onClick={handleTerlama}
+            onClick={() => {
+              handleTerlama();
+              setSortingBy("Terlama");
+            }}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -51,9 +63,15 @@ const ModalSelectSort = ({
               ></path>
             </svg>
             Terlama
+            {sortingBy === "Terlama" ? (
+              <img src={IconNike} width={18} height={18} className="ml-auto" />
+            ) : null}
           </button>
           <button
-            onClick={handleAZ}
+            onClick={() => {
+              handleAZ();
+              setSortingBy("AZ");
+            }}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -71,9 +89,15 @@ const ModalSelectSort = ({
               ></path>
             </svg>
             A-Z
+            {sortingBy === "AZ" ? (
+              <img src={IconNike} width={18} height={18} className="ml-auto" />
+            ) : null}
           </button>
           <button
-            onClick={handleZA}
+            onClick={() => {
+              handleZA();
+              setSortingBy("ZA");
+            }}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -91,9 +115,15 @@ const ModalSelectSort = ({
               ></path>
             </svg>
             Z-A
+            {sortingBy === "ZA" ? (
+              <img src={IconNike} width={18} height={18} className="ml-auto" />
+            ) : null}
           </button>
           <button
-            onClick={handleBelumSelesai}
+            onClick={() => {
+              handleBelumSelesai();
+              setSortingBy("Belum");
+            }}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -111,6 +141,9 @@ const ModalSelectSort = ({
               ></path>
             </svg>
             Belum Selesai
+            {sortingBy === "Belum" ? (
+              <img src={IconNike} width={18} height={18} className="ml-auto" />
+            ) : null}
           </button>
         </div>
       ) : null}
