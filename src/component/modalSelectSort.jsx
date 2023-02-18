@@ -11,7 +11,7 @@ const ModalSelectSort = ({
   return (
     <div>
       {showSelectSort ? (
-        <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-30">
+        <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-auto">
           <button
             onClick={handleTerbaru}
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
