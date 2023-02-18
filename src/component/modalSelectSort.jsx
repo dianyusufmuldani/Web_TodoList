@@ -13,7 +13,7 @@ const ModalSelectSort = ({
       {showSelectSort ? (
         <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-0">
           <button
-            data-cy="sort-selection"
+            data-cy="sort-latest"
             onClick={handleTerbaru}
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -34,7 +34,7 @@ const ModalSelectSort = ({
           </button>
           <button
             onClick={handleTerlama}
-            data-cy="sort-selection"
+            data-cy="sort-oldest"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
             <svg
@@ -54,7 +54,7 @@ const ModalSelectSort = ({
           </button>
           <button
             onClick={handleAZ}
-            data-cy="sort-selection"
+            data-cy="sort-az"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
             <svg
@@ -74,7 +74,7 @@ const ModalSelectSort = ({
           </button>
           <button
             onClick={handleZA}
-            data-cy="sort-selection"
+            data-cy="sort-za"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
             <svg
@@ -94,7 +94,7 @@ const ModalSelectSort = ({
           </button>
           <button
             onClick={handleBelumSelesai}
-            data-cy="sort-selection"
+            data-cy="sort-unfinished"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
             <svg
