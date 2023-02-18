@@ -13,6 +13,7 @@ const ModalSelectSort = ({
       {showSelectSort ? (
         <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-0">
           <button
+            data-cy="sort-selection"
             onClick={handleTerbaru}
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >

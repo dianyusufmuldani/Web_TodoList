@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 import HeaderApp from "../component/header";
 import ImageEmpty from "../assets/todo-empty-state.png";
@@ -25,9 +25,10 @@ const Detail = () => {
   const [sorted, setSorted] = useState({ sorted: "title", reversed: false });
   const [showSelectSort, setShowSelectSort] = useState(false);
   const [lifecycle, setLifecycle] = useState(null);
+  const refOutside = useRef();
   const params = useParams();
   const { id } = params;
-  console.log("isi data", data);
+  console.log("isi data", title);
 
   useEffect(() => {
     if (data !== null || data !== undefined) {
@@ -41,6 +42,18 @@ const Detail = () => {
     } else {
     }
   }, [dataTitle, lifecycle, dataOne]);
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!refOutside.current.contains(e.target)) {
+        console.log("Sukses", title);
+        // handleEditActivity();
+      } else {
+        console.log("Gagal");
+      }
+    };
+    document.addEventListener("mousedown", handler);
+  }, []);
   const SortAscending = () => {
     let sorted = [...data];
     if (sorted.length > 0) {
@@ -199,7 +212,7 @@ const Detail = () => {
             value={title}
             onChange={(value) => setTitle(value.target.value)}
             hidden={!showEdit}
-            onAbort={handleEditActivity}
+            ref={refOutside}
           ></input>
           <h1
             onClick={() => setShowEdit(true)}
