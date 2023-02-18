@@ -28,16 +28,18 @@ const Detail = () => {
   const refOutside = useRef();
   const params = useParams();
   const { id } = params;
-  console.log("isi data", title);
+  console.log("isi data", dataOne);
 
   useEffect(() => {
     if (data !== null || data !== undefined) {
       axios
         .get(`https://todo.api.devcode.gethired.id/activity-groups/${id}`)
         .then((res) => {
-          setData(res.data.todo_items);
+          // setData(res.data.todo_items);
           console.log("Success get 1 data", res.data.todo_items);
           setDataTitle(res.data.title);
+          let sorted = res.data.todo_items.sort((a, b) => a.id - b.id);
+          setData(sorted);
         });
     } else {
     }
@@ -106,11 +108,27 @@ const Detail = () => {
       activity_group_id: id,
       priority: priority,
     };
+
     axios
       .post("https://todo.api.devcode.gethired.id/todo-items", request)
       .then((res) => {
         console.log(res.status);
         setDataOne(res.status);
+      });
+  };
+  const handleSaveEditItem = (nameItem, priority) => {
+    console.log("isinya", nameItem, priority, dataOne.id);
+    const request = { title: nameItem, priority: priority };
+    axios
+      .patch(
+        `https://todo.api.devcode.gethired.id/todo-items/${dataOne.id}`,
+        request
+      )
+      .then((res) => {
+        console.log("updated", res);
+        setLifecycle(res.status);
+        setDataOne(null);
+        setShowModalEditItem(false);
       });
   };
   useEffect(() => {
@@ -189,6 +207,7 @@ const Detail = () => {
           handleSelectPriority={() =>
             setShowSelectPriority(!showSelectPriority)
           }
+          handleSave={handleSaveEditItem}
         />
         <div className="flex h-[54px] items-center gap-5">
           <a data-cy="todo-back-button" className="mr-2" href="/">
@@ -371,7 +390,10 @@ const Detail = () => {
                     )}
                     <button
                       data-cy="todo-item-edit-button"
-                      onClick={() => setShowModalEditItem(true)}
+                      onClick={() => {
+                        setShowModalEditItem(true);
+                        setDataOne(item);
+                      }}
                     >
                       <svg
                         width={24}

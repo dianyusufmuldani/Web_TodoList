@@ -3,11 +3,14 @@ import React, { useState } from "react";
 const ModalEdit = ({
   showModalEditItem,
   showSelectPriority,
-  showSelectPriorityEdit,
   handleCancelEditItem,
   handleSelectPriority,
+  handleSave,
 }) => {
-  const [priority, setPriority] = useState(null);
+  const [priority, setPriority] = useState("Pilih Priority");
+  const [showSelectPriorityEdit, setShowSelectPriorityEdit] = useState(false);
+  const [nameItem, setNameItem] = useState(null);
+
   return (
     <div>
       {showModalEditItem ? (
@@ -51,6 +54,7 @@ const ModalEdit = ({
                 className="border-primary mb-6 h-[52px] rounded-md border py-[14px] px-[18px] outline-none focus:border-[#16ABF8]"
                 type={"text"}
                 placeholder="Tambahkan nama list item"
+                onChange={(value) => setNameItem(value.target.value)}
               ></input>
               <label
                 data-cy="modal-add-priority-title"
@@ -59,7 +63,9 @@ const ModalEdit = ({
                 Priority
               </label>
             </div>
-            <div onClick={handleSelectPriority}>
+            <div
+              onClick={() => setShowSelectPriorityEdit(!showSelectPriorityEdit)}
+            >
               <button
                 data-cy="modal-add-priority-dropdown"
                 type="button"
@@ -81,7 +87,7 @@ const ModalEdit = ({
                 </svg>
               </button>
               {showSelectPriorityEdit ? (
-                <div className="divide-primary absolute divide-y rounded-md bg-white border-primary mt-0 flex w-52 flex-col rounded-t-none border border-t-0">
+                <div className="divide-primary absolute divide-y rounded-md bg-white border-primary mt-[-50px] ml-[30px] flex w-52 flex-col rounded-t-none border border-t-0">
                   <button
                     onClick={() => setPriority("very-high")}
                     data-cy="modal-add-priority-item"
@@ -202,6 +208,7 @@ const ModalEdit = ({
             </div>
             <div className="border-primary border-t px-10 py-5">
               <button
+                onClick={() => handleSave(nameItem, priority)}
                 data-cy="modal-add-save-button"
                 className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white ml-auto w-40 justify-center disabled:opacity-20"
                 //   disabled={checkFieldEdit}
