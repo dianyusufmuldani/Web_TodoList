@@ -42,9 +42,35 @@ const Detail = () => {
     }
   }, [dataTitle, lifecycle, dataOne]);
   const SortAscending = () => {
-    var newData = data.sort((a, b) => a.id - b.id);
-    console.log("ini New Data", newData);
-    setData(newData);
+    let sorted = [...data];
+    if (sorted.length > 0) {
+      let result = sorted.sort((a, b) => a.title.localeCompare(b.title));
+      console.log("hasil", result);
+      setData(result);
+    }
+  };
+  const SortDescending = () => {
+    let sorted = [...data];
+    if (sorted.length > 0) {
+      let result = sorted.sort((b, a) => a.title.localeCompare(b.title));
+      console.log("hasil", result);
+      setData(result);
+    }
+  };
+  const SortTerbaru = () => {
+    let sorted = data.sort((a, b) => a.id - b.id);
+    console.log("hasil", sorted);
+    setData(sorted);
+  };
+  const SortTerlama = () => {
+    let sorted = data.sort((b, a) => a.id - b.id);
+    console.log("hasil", sorted);
+    setData(sorted);
+  };
+  const SortBelumSelesai = () => {
+    let sorted = data.sort((b, a) => a.is_active - b.is_active);
+    console.log("hasil", sorted);
+    setData(sorted);
   };
 
   const handleEditActivity = () => {
@@ -197,9 +223,25 @@ const Detail = () => {
               </button>
               <ModalSelectSort
                 showSelectSort={showSelectSort}
-                handleTerbaru={() => {
+                handleAZ={() => {
                   SortAscending();
                   setShowSelectSort(false);
+                }}
+                handleZA={() => {
+                  SortDescending();
+                  setShowSelectSort(false);
+                }}
+                handleTerbaru={() => {
+                  setShowSelectSort(false);
+                  SortTerbaru();
+                }}
+                handleTerlama={() => {
+                  setShowSelectSort(false);
+                  SortTerlama();
+                }}
+                handleBelumSelesai={() => {
+                  setShowSelectSort(false);
+                  SortBelumSelesai();
                 }}
               />
             </div>

@@ -1,6 +1,13 @@
 import React from "react";
 
-const ModalSelectSort = ({ showSelectSort, handleTerbaru }) => {
+const ModalSelectSort = ({
+  showSelectSort,
+  handleTerbaru,
+  handleTerlama,
+  handleAZ,
+  handleZA,
+  handleBelumSelesai,
+}) => {
   return (
     <div>
       {showSelectSort ? (
@@ -26,6 +33,7 @@ const ModalSelectSort = ({ showSelectSort, handleTerbaru }) => {
             Terbaru
           </button>
           <button
+            onClick={handleTerlama}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -45,6 +53,7 @@ const ModalSelectSort = ({ showSelectSort, handleTerbaru }) => {
             Terlama
           </button>
           <button
+            onClick={handleAZ}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -64,6 +73,7 @@ const ModalSelectSort = ({ showSelectSort, handleTerbaru }) => {
             A-Z
           </button>
           <button
+            onClick={handleZA}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
@@ -83,6 +93,7 @@ const ModalSelectSort = ({ showSelectSort, handleTerbaru }) => {
             Z-A
           </button>
           <button
+            onClick={handleBelumSelesai}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
