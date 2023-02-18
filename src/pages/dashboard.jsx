@@ -11,6 +11,7 @@ const Dashboard = () => {
   const [showModal, setShowModal] = React.useState(false);
   const [itemForDelete, setItemForDelete] = useState(null);
   const [showModalToasted, setModalToasted] = useState(false);
+  const [lifecycle, setLifecycle] = useState(null);
   console.log("item ini", itemForDelete);
   useEffect(() => {
     axios
@@ -21,7 +22,16 @@ const Dashboard = () => {
         setData(res.data.data);
         console.log("isi Data", data);
       });
-  }, [data]);
+  }, [lifecycle]);
+  useEffect(() => {
+    if (lifecycle !== null) {
+      if (lifecycle === 201) {
+        setLifecycle(null);
+      } else if (lifecycle === 200) {
+        setLifecycle(null);
+      }
+    }
+  }, [lifecycle]);
 
   const AddActiviy = () => {
     axios
@@ -31,6 +41,7 @@ const Dashboard = () => {
       })
       .then((res) => {
         console.log(res);
+        setLifecycle(res.status);
       });
   };
   const handleModalDelete = (item) => {
@@ -49,6 +60,7 @@ const Dashboard = () => {
           )
           .then((res) => {
             console.log("deleted", res);
+            setLifecycle(res.status);
           });
       }
     }
@@ -88,10 +100,9 @@ const Dashboard = () => {
         <div className="grid grid-cols-4 gap-5">
           {data.map((item, index) => {
             return (
-              <div className="mb-[20px]">
+              <div className="mb-[20px]" key={index}>
                 <a
                   href={`/detail/${item.id}`}
-                  key={index}
                   data-cy="activity-item"
                   className="flex h-60 flex-col rounded-xl bg-white p-6 text-left shadow-lg mb-[-48px]"
                 >

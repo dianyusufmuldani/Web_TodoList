@@ -24,6 +24,7 @@ const Detail = () => {
   const [dataTitle, setDataTitle] = useState(null);
   const [sorted, setSorted] = useState({ sorted: "title", reversed: false });
   const [showSelectSort, setShowSelectSort] = useState(false);
+  const [lifecycle, setLifecycle] = useState(null);
   const params = useParams();
   const { id } = params;
   console.log("isi data", dataOne);
@@ -39,8 +40,7 @@ const Detail = () => {
         });
     } else {
     }
-  }, [data]);
-
+  }, [dataTitle, lifecycle, dataOne]);
   const SortAscending = () => {
     var newData = data.sort((a, b) => a.id - b.id);
     console.log("ini New Data", newData);
@@ -68,16 +68,27 @@ const Detail = () => {
     axios
       .post("https://todo.api.devcode.gethired.id/todo-items", request)
       .then((res) => {
-        console.log(res);
+        console.log(res.status);
+        setDataOne(res.status);
       });
-    setShowAddItems(false);
   };
+  useEffect(() => {
+    if (dataOne !== null || lifecycle !== null) {
+      if (dataOne === 201) {
+        setShowAddItems(false);
+        setDataOne(null);
+      } else if (lifecycle === 200) {
+        setLifecycle(null);
+      }
+    }
+  }, [dataOne, lifecycle]);
 
   const handleDeleteItems = () => {
     axios
       .delete(`https://todo.api.devcode.gethired.id/todo-items/${dataOne.id}`)
       .then((res) => {
         console.log("item deleted", res);
+        setLifecycle(200);
       });
     setShowModalDelete(false);
     setShowModalDeleteSuccess(true);
@@ -91,7 +102,8 @@ const Detail = () => {
         request
       )
       .then((res) => {
-        console.log("not active");
+        console.log("not active", res);
+        setLifecycle(res.status);
       });
   };
   const handleInActiveItems = (item) => {
@@ -102,7 +114,8 @@ const Detail = () => {
         request
       )
       .then((res) => {
-        console.log("actived");
+        console.log("actived", res);
+        setLifecycle(res.status);
       });
   };
   return (
@@ -181,11 +194,16 @@ const Detail = () => {
                   ></path>
                 </svg>
               </button>
-              <ModalSelectSort showSelectSort={showSelectSort} />
+              <ModalSelectSort
+                showSelectSort={showSelectSort}
+                handleTerbaru={() => {
+                  SortAscending();
+                  setShowSelectSort(false);
+                }}
+              />
             </div>
           ) : null}
           <button
-            // onClick={SortAscending}
             onClick={() => setShowAddItems(true)}
             data-cy="todo-add-button"
             className="flex h-[54px] items-center gap-[6px] rounded-full px-7 font-semibold hover:opacity-70 bg-primary text-white "

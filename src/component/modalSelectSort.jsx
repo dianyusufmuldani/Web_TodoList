@@ -1,11 +1,12 @@
 import React from "react";
 
-const ModalSelectSort = ({ showSelectSort }) => {
+const ModalSelectSort = ({ showSelectSort, handleTerbaru }) => {
   return (
     <div>
       {showSelectSort ? (
         <div className="divide-cancel absolute mt-1 divide-y rounded-md bg-white shadow-lg z-auto">
           <button
+            onClick={handleTerbaru}
             data-cy="sort-selection"
             className="flex h-[52px] w-56 items-center gap-4 py-4 px-5"
           >
