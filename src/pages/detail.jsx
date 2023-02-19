@@ -201,6 +201,7 @@ const Detail = () => {
             setShowSelectPriority(!showSelectPriority)
           }
           handleSave={handleSaveEditItem}
+          dataOne={dataOne}
         />
         <div className="flex h-[54px] items-center gap-5">
           <a data-cy="todo-back-button" className="mr-2" href="/">

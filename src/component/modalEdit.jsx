@@ -6,11 +6,21 @@ const ModalEdit = ({
   handleCancelEditItem,
   handleSelectPriority,
   handleSave,
+  dataOne,
 }) => {
   const [priority, setPriority] = useState("Pilih Priority");
   const [showSelectPriorityEdit, setShowSelectPriorityEdit] = useState(false);
-  const [nameItem, setNameItem] = useState(null);
+  const [nameItem, setNameItem] = useState("");
   const [checkForm, setCheckForm] = useState(true);
+  console.log("isi nameItem", nameItem);
+  console.log("isi data one", dataOne);
+  useEffect(() => {
+    if (dataOne !== null) {
+      if (dataOne.title !== null) {
+        setNameItem(dataOne.title);
+      }
+    }
+  }, [dataOne]);
   useEffect(() => {
     if (nameItem !== null && nameItem !== "" && priority !== "Pilih Priority") {
       setCheckForm(false);
@@ -63,6 +73,7 @@ const ModalEdit = ({
                 type={"text"}
                 placeholder="Tambahkan nama list item"
                 onChange={(value) => setNameItem(value.target.value)}
+                value={nameItem}
               ></input>
               <label
                 data-cy="modal-add-priority-title"
