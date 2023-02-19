@@ -25,7 +25,7 @@ const Detail = () => {
   const [sorted, setSorted] = useState({ sorted: "title", reversed: false });
   const [showSelectSort, setShowSelectSort] = useState(false);
   const [lifecycle, setLifecycle] = useState(null);
-  const refOutside = useRef();
+
   const params = useParams();
   const { id } = params;
   console.log("isi data", dataOne);
@@ -45,17 +45,6 @@ const Detail = () => {
     }
   }, [dataTitle, lifecycle, dataOne]);
 
-  useEffect(() => {
-    let handler = (e) => {
-      if (!refOutside.current.contains(e.target)) {
-        console.log("Sukses", title);
-        // handleEditActivity();
-      } else {
-        console.log("Gagal");
-      }
-    };
-    document.addEventListener("mousedown", handler);
-  }, []);
   const SortAscending = () => {
     let sorted = [...data];
     if (sorted.length > 0) {
@@ -231,7 +220,7 @@ const Detail = () => {
             value={title}
             onChange={(value) => setTitle(value.target.value)}
             hidden={!showEdit}
-            ref={refOutside}
+            onBlur={handleEditActivity}
           ></input>
           <h1
             onClick={() => setShowEdit(true)}
