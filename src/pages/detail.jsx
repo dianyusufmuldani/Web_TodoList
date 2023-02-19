@@ -336,7 +336,7 @@ const Detail = () => {
         </div>
         {data.length === 0 ? (
           <button data-cy="todo-empty-state" className="mx-auto mt-24">
-            <img src={ImageEmpty}></img>
+            <img src={ImageEmpty} width={391} height={353}></img>
           </button>
         ) : (
           <>
