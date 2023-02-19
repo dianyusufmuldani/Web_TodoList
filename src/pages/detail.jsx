@@ -20,7 +20,7 @@ const Detail = () => {
   const [showAddItems, setShowAddItems] = useState(false);
   const [itemName, setItemName] = useState(null);
   const [priority, setPriority] = useState("Pilih Priority");
-  const [title, setTitle] = useState(null);
+  const [title, setTitle] = useState("");
   const [dataTitle, setDataTitle] = useState(null);
   const [sorted, setSorted] = useState({ sorted: "title", reversed: false });
   const [showSelectSort, setShowSelectSort] = useState(false);
@@ -28,7 +28,7 @@ const Detail = () => {
 
   const params = useParams();
   const { id } = params;
-  console.log("isi data", dataOne);
+  console.log("isi data", title);
 
   useEffect(() => {
     if (data !== null || data !== undefined) {
@@ -78,17 +78,21 @@ const Detail = () => {
   };
 
   const handleEditActivity = () => {
-    const request = { title: title };
-    axios
-      .patch(
-        `https://todo.api.devcode.gethired.id/activity-groups/${id}`,
-        request
-      )
-      .then((res) => {
-        console.log("Edited", res);
-        setLifecycle(res.status);
-      });
-    setShowEdit(false);
+    if (showEdit === true) {
+      const request = { title: title };
+      axios
+        .patch(
+          `https://todo.api.devcode.gethired.id/activity-groups/${id}`,
+          request
+        )
+        .then((res) => {
+          console.log("Edited", res);
+          setLifecycle(res.status);
+        });
+      setShowEdit(false);
+    } else {
+      console.log("Gagal");
+    }
   };
 
   const handleAddItems = (itemName, priority) => {
@@ -223,7 +227,12 @@ const Detail = () => {
             onBlur={handleEditActivity}
           ></input>
           <h1
-            onClick={() => setShowEdit(true)}
+            onClick={() => {
+              setShowEdit(true);
+              if (title === "") {
+                setTitle(dataTitle);
+              }
+            }}
             data-cy="todo-title"
             className="text-4xl font-bold"
             hidden={showEdit}
@@ -235,6 +244,9 @@ const Detail = () => {
             onClick={() => {
               handleEditActivity();
               setShowEdit(!showEdit);
+              if (title === "") {
+                setTitle(dataTitle);
+              }
             }}
           >
             <svg
