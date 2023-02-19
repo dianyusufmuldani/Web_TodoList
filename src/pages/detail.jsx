@@ -25,11 +25,13 @@ const Detail = () => {
   const [sorted, setSorted] = useState({ sorted: "title", reversed: false });
   const [showSelectSort, setShowSelectSort] = useState(false);
   const [lifecycle, setLifecycle] = useState(null);
-
+  const inputRef = useRef();
   const params = useParams();
   const { id } = params;
   console.log("isi data", title);
-
+  const clickForFocusInput = () => {
+    inputRef.current.focus();
+  };
   useEffect(() => {
     if (data !== null || data !== undefined) {
       axios
@@ -226,6 +228,7 @@ const Detail = () => {
             onChange={(value) => setTitle(value.target.value)}
             hidden={!showEdit}
             onBlur={handleEditActivity}
+            ref={inputRef}
           ></input>
           <h1
             onClick={() => {
@@ -233,6 +236,9 @@ const Detail = () => {
               if (title === "") {
                 setTitle(dataTitle);
               }
+              setTimeout(() => {
+                clickForFocusInput();
+              }, 100);
             }}
             data-cy="todo-title"
             className="text-4xl font-bold"
@@ -248,6 +254,9 @@ const Detail = () => {
               if (title === "") {
                 setTitle(dataTitle);
               }
+              setTimeout(() => {
+                clickForFocusInput();
+              }, 100);
             }}
           >
             <svg
